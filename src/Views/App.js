@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
-import Popular from './Popular'
+import Popular from '../Components/Popular'
 
 class App extends Component {
   render() {
