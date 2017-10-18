@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './Popular.css'
+import { fetchPopularRepos } from '../Utils/api'
 
 const SelectLanguage = ({ selectedLanguage, onSelect }) => {
   const languages = [
@@ -39,15 +40,30 @@ class Popular extends React.Component {
   constructor(props){
   	super(props)
   	this.state = {
-      selectedLanguage: 'All'
+      selectedLanguage: 'All',
+      repos: null
     }
     this.updateLanguage = this.updateLanguage.bind(this)
   }
 
+  componentDidMount() {
+    // Fire off initial request to Github with defauly state
+    this.updateLanguage(this.state.selectedLanguage)
+  }
+
   updateLanguage(language){
     this.setState({
-      selectedLanguage: language
+      selectedLanguage: language,
+      repos: null, // Temporarily set it to null; we’ll set it with our API response in a callback later
     })
+    // Then we fire off a request to Github to ask for new repos that match the language we want
+    fetchPopularRepos(language).then(
+      (response) => {
+        this.setState({
+          repos: response // Finally, update our state
+        })
+      }
+    )
   }
 
   render() {
