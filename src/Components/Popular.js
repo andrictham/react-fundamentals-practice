@@ -36,12 +36,26 @@ SelectLanguage.propTypes = {
   onSelect: PropTypes.func.isRequired,
 }
 
+const RepoGrid = ( { repos } ) => {
+  return (
+    <ul className='popular-list'>
+      {repos.map( (repo, index) => {
+        return (
+          <li key={repo.id} className='popular-item'>
+            {repo.name}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
 class Popular extends React.Component {
   constructor(props){
   	super(props)
   	this.state = {
       selectedLanguage: 'All',
-      repos: null
+      repos: []
     }
     this.updateLanguage = this.updateLanguage.bind(this)
   }
@@ -54,7 +68,7 @@ class Popular extends React.Component {
   updateLanguage(language){
     this.setState({
       selectedLanguage: language,
-      repos: null, // Temporarily set it to null; we’ll set it with our API response in a callback later
+      repos: [], // Temporarily set it to null; we’ll set it with our API response in a callback later
     })
     // Then we fire off a request to Github to ask for new repos that match the language we want
     fetchPopularRepos(language).then(
@@ -73,6 +87,7 @@ class Popular extends React.Component {
           selectedLanguage={this.state.selectedLanguage}
           onSelect={this.updateLanguage}
         />
+        <RepoGrid repos={this.state.repos} />
       </div>
     );
   }
