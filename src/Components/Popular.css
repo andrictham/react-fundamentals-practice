@@ -8,3 +8,7 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+.languages li.active {
+  color: #d0021b;
+}
