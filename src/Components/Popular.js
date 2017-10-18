@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './Popular.css'
 
 const SelectLanguage = ({ selectedLanguage, onSelect }) => {
@@ -27,6 +28,11 @@ const SelectLanguage = ({ selectedLanguage, onSelect }) => {
       })}
     </ul>
   )
+}
+
+SelectLanguage.propTypes = {
+  selectedLanguage: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired,
 }
 
 class Popular extends React.Component {
