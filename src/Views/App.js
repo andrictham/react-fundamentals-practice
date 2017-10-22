@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom'
 import './App.css'
 import Nav from '../Components/Nav'
@@ -15,9 +16,16 @@ class App extends Component {
       <Router>
         <div className="App">
           <Nav />
-          <Route exact path="/" component={Home}></Route>
-          <Route path="/battle" component={Battle}></Route>
-          <Route path="/popular" component={Popular}></Route>
+          {/* What Switch does is, instead of rendering all routes that are active, Switch is going to render just one specific route – the very first one it finds a match for. This allous us to specify a 404 page. */}
+          <Switch>
+            <Route exact path="/" component={Home}></Route>
+            <Route path="/battle" component={Battle}></Route>
+            <Route path="/popular" component={Popular}></Route>
+            {/* We can pass in a render prop to <Route />, which takes in a functional component, to tell <Router /> to render something when no match is found */}
+            <Route render={ () => {
+              return <p>Not found</p>
+            }} />
+          </Switch>
         </div>
       </Router>
     );
