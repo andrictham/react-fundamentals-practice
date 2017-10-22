@@ -77,7 +77,7 @@ class Popular extends React.Component {
   }
 
   componentDidMount() {
-    // Fire off initial request to Github with defauly state
+    // Fire off initial request to Github with default state
     this.updateLanguage(this.state.selectedLanguage)
   }
 
