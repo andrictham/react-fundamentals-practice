@@ -1,0 +1,11 @@
+.nav {
+  display: flex;
+}
+
+.nav li {
+  margin-right: 1rem;
+}
+
+.nav-link--active {
+  font-weight: bold;
+}
