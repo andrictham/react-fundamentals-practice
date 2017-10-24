@@ -19,7 +19,7 @@ const SelectLanguage = ({ selectedLanguage, onSelect }) => {
           <li
             key={language}
             onClick={ () => onSelect(language) }
-            // Our function is already bound in constructor, so `null` tells it to respect that earlier binding, but go ahead and create a new function with `language` passed in as an argument. https://stackoverflow.com/questions/29810914/react-js-onclick-cant-pass-value-to-method
+            // https://stackoverflow.com/questions/29810914/react-js-onclick-cant-pass-value-to-method
             className={
               selectedLanguage === language ? "active" : ""
             }>
