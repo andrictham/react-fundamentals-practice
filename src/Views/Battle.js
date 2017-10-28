@@ -121,6 +121,10 @@ class Battle extends Component {
 			playerOneImage,
 			playerTwoImage,
 		} = this.state
+
+		const { match } = this.props // from React Router
+		// will be "/battle"
+
 		return (
 			<div>
 				<div className="row">
@@ -132,7 +136,7 @@ class Battle extends Component {
 							onSubmit={this.handleSubmit}
 						/>
 					)}
-					{/* If playerOneImage is falsey, then render <PlayerPreview /> component with Player One params */}
+					{/* If playerOneImage is truthy, then render <PlayerPreview /> component with Player One params */}
 					{playerOneImage !== null && (
 						<PlayerPreview
 							id="playerOne"
@@ -149,7 +153,7 @@ class Battle extends Component {
 							onSubmit={this.handleSubmit}
 						/>
 					)}
-					{/* If playerTwoImage is falsey, then render <PlayerPreview /> component with Player Two params */}
+					{/* If playerTwoImage is truthy, then render <PlayerPreview /> component with Player Two params */}
 					{playerTwoImage !== null && (
 						<PlayerPreview
 							id="playerTwo"
@@ -160,9 +164,18 @@ class Battle extends Component {
 					)}
 				</div>
 
+				{/* If both players are truthy, we want to show a “Battle” button, which takes us to another view that compares both players. */}
 				{playerOneImage &&
 					playerTwoImage && (
-						<Link className="button" to="">
+						<Link
+							className="button"
+							to={{
+								pathname: match.url + '/results',
+								// pass along dynamic params
+								search: `?playerOneName=${playerOneName}
+                  &playerTwoName=${playerTwoName}`,
+							}}
+						>
 							Battle
 						</Link>
 					)}
