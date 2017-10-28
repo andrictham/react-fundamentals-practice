@@ -1,7 +1,23 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import queryString from 'query-string'
 import { battle } from '../Utils/api'
+
+const Player = ({ label, score, profile }) => {
+	return (
+		<div>
+			<h1 className="header">{label}</h1>
+			<h3>Score: {score}</h3>
+		</div>
+	)
+}
+
+Player.propTypes = {
+	label: PropTypes.string.isRequired,
+	score: PropTypes.number.isRequired,
+	profile: PropTypes.object.isRequired,
+}
 
 class Results extends Component {
 	constructor(props) {
@@ -53,7 +69,16 @@ class Results extends Component {
 			)
 		}
 		if (!loading && !error) {
-			return <div>{JSON.stringify(this.state, null, 2)}</div>
+			return (
+				<div className="row">
+					<Player
+						label="Winner"
+						profile={winner.profile}
+						score={winner.score}
+					/>
+					<Player label="Loser" profile={loser.profile} score={loser.score} />
+				</div>
+			)
 		}
 	}
 }
