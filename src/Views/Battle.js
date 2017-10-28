@@ -3,6 +3,22 @@ import PropTypes from 'prop-types'
 
 import './Battle.css'
 
+const PlayerPreview = ({ avatar, username, onReset }) => {
+	return (
+		<div>
+			<div className="column">
+				<img src={avatar} alt={`Avatar for ${username}`} className="avatar" />
+			</div>
+		</div>
+	)
+}
+
+PlayerPreview.propTypes = {
+	avatar: PropTypes.string.isRequired,
+	username: PropTypes.string.isRequired,
+	onReset: PropTypes.func.isRequired,
+}
+
 class PlayerInput extends Component {
 	constructor(props) {
 		super(props)
