@@ -172,8 +172,7 @@ class Battle extends Component {
 							to={{
 								pathname: match.url + '/results',
 								// pass along dynamic params
-								search: `?playerOneName=${playerOneName}
-                  &playerTwoName=${playerTwoName}`,
+								search: `?playerOne=${playerOneName}&playerTwo=${playerTwoName}`,
 							}}
 						>
 							Battle
