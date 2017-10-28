@@ -3,13 +3,29 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import queryString from 'query-string'
 
+import './Results.css'
 import { battle } from '../Utils/api'
 import PlayerPreview from '../Components/PlayerPreview'
 
 const Profile = ({ profile }) => {
 	return (
 		<PlayerPreview avatar={profile.avatar_url} username={profile.login}>
-			<div className="text-center">User info goes here</div>
+			<ul className="text-center space-list-items">
+				{/* Some of this info is optional */}
+				{profile.name && <li>{profile.name}</li>}
+				{profile.location && <li>{profile.location}</li>}
+				{profile.company && <li>{profile.company}</li>}
+				<li>Followers: {profile.followers}</li>
+				<li>Following: {profile.following}</li>
+				<li>Public Repos: {profile.public_repos}</li>
+				{profile.blog && (
+					<li>
+						<a href={profile.blog} target="_blank">
+							{profile.blog}
+						</a>
+					</li>
+				)}
+			</ul>
 		</PlayerPreview>
 	)
 }
