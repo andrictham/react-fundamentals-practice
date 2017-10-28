@@ -36,3 +36,9 @@
 	font-size: 30px;
 	font-weight: 200;
 }
+
+.avatar {
+	width: 150px;
+	height: 150%;
+	border-radius: 50%;
+}

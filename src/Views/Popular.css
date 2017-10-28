@@ -1,48 +1,42 @@
 .languages {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .languages li {
-  margin: 10px;
-  font-weight: bold;
-  cursor: pointer;
+	margin: 10px;
+	font-weight: bold;
+	cursor: pointer;
 }
 
 .languages li.active {
-  color: #d0021b;
+	color: #d0021b;
 }
 
 .popular-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 }
 
 .popular-item {
-  margin: 1.5rem;
-  text-align: center;
+	margin: 1.5rem;
+	text-align: center;
 }
 
 .space-list-items {
-  margin-bottom: 0.25rem;
+	margin-bottom: 0.25rem;
 }
 
 .space-list-items li {
-  margin: 0.5rem;
-}
-
-.avatar {
-  width: 150px;
-  height: 150%;
-  border-radius: 50%
+	margin: 0.5rem;
 }
 
 .popular-rank {
-  font-size: 1.2rem;
-  margin: 10px;
+	font-size: 1.2rem;
+	margin: 10px;
 }
 
 .popular-loading {
-  text-align: center;
+	text-align: center;
 }
