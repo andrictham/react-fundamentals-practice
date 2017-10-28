@@ -118,12 +118,14 @@ class Battle extends Component {
 					)}
 					{/* If playerOneImage is truthy, then render <PlayerPreview /> component with Player One params */}
 					{playerOneImage !== null && (
-						<PlayerPreview
-							id="playerOne"
-							avatar={playerOneImage}
-							username={playerOneName}
-							onReset={this.handleReset}
-						/>
+						<PlayerPreview avatar={playerOneImage} username={playerOneName}>
+							<button
+								className="reset"
+								onClick={() => this.handleReset('playerOne')}
+							>
+								Reset
+							</button>
+						</PlayerPreview>
 					)}
 					{/* If playerTwoName is falsey, then render <PlayerInput /> component with Player Two params */}
 					{!playerTwoName && (
@@ -139,8 +141,14 @@ class Battle extends Component {
 							id="playerTwo"
 							avatar={playerTwoImage}
 							username={playerTwoName}
-							onReset={this.handleReset}
-						/>
+						>
+							<button
+								className="reset"
+								onClick={() => this.handleReset('playerTwo')}
+							>
+								Reset
+							</button>
+						</PlayerPreview>
 					)}
 				</div>
 
