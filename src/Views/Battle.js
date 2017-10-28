@@ -10,9 +10,14 @@ const PlayerPreview = ({ avatar, username, id, onReset }) => {
 				<img src={avatar} alt={`Avatar for ${username}`} className="avatar" />
 				<h2 className="username">@{username}</h2>
 			</div>
-      <button className="reset" onClick={()=>{onReset(id)}>
-        Reset
-      </button>
+			<button
+				className="reset"
+				onClick={() => {
+					onReset(id)
+				}}
+			>
+				Reset
+			</button>
 		</div>
 	)
 }
@@ -20,7 +25,7 @@ const PlayerPreview = ({ avatar, username, id, onReset }) => {
 PlayerPreview.propTypes = {
 	avatar: PropTypes.string.isRequired,
 	username: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+	id: PropTypes.string.isRequired,
 	onReset: PropTypes.func.isRequired,
 }
 
@@ -89,6 +94,7 @@ class Battle extends Component {
 		}
 
 		this.handleSubmit = this.handleSubmit.bind(this)
+		this.handleReset = this.handleReset.bind(this)
 	}
 
 	handleSubmit(id, username) {
@@ -103,8 +109,15 @@ class Battle extends Component {
 		})
 	}
 
+	handleReset(id) {}
+
 	render() {
-		const { playerOneName, playerTwoName } = this.state
+		const {
+			playerOneName,
+			playerTwoName,
+			playerOneImage,
+			playerTwoImage,
+		} = this.state
 		return (
 			<div>
 				<div className="row">
@@ -116,12 +129,30 @@ class Battle extends Component {
 							onSubmit={this.handleSubmit}
 						/>
 					)}
+					{/* If playerOneImage is falsey, then render <PlayerPreview /> component with Player One params */}
+					{playerOneImage !== null && (
+						<PlayerPreview
+							id="playerOne"
+							avatar={playerOneImage}
+							username={playerOneName}
+							onReset={this.handleReset}
+						/>
+					)}
 					{/* If playerTwoName is falsey, then render <PlayerInput /> component with Player Two params */}
 					{!playerTwoName && (
 						<PlayerInput
 							id="playerTwo"
-							label="Player One"
+							label="Player Two"
 							onSubmit={this.handleSubmit}
+						/>
+					)}
+					{/* If playerTwoImage is falsey, then render <PlayerPreview /> component with Player Two params */}
+					{playerTwoImage !== null && (
+						<PlayerPreview
+							id="playerTwo"
+							avatar={playerTwoImage}
+							username={playerTwoName}
+							onReset={this.handleReset}
 						/>
 					)}
 				</div>
