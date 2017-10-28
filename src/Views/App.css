@@ -16,6 +16,10 @@
 	width: 500px;
 }
 
+.text-center {
+	text-align: center;
+}
+
 .column input {
 	border-radius: 3px;
 	margin: 10px 0;

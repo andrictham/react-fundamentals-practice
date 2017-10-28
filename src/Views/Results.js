@@ -2,13 +2,24 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import queryString from 'query-string'
+
 import { battle } from '../Utils/api'
+import PlayerPreview from '../Components/PlayerPreview'
+
+const Profile = ({ profile }) => {
+	return (
+		<PlayerPreview avatar={profile.avatar_url} username={profile.login}>
+			<div className="text-center">User info goes here</div>
+		</PlayerPreview>
+	)
+}
 
 const Player = ({ label, score, profile }) => {
 	return (
 		<div>
 			<h1 className="header">{label}</h1>
-			<h3>Score: {score}</h3>
+			<h3 className="text-center">Score: {score}</h3>
+			<Profile profile={profile} />
 		</div>
 	)
 }
