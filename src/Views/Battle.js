@@ -39,7 +39,7 @@ class Battle extends Component {
 						<PlayerInput
 							id="playerOne"
 							label="Player One"
-							onSubmit={this.handleSubmit()}
+							onSubmit={this.handleSubmit}
 						/>
 					)}
 					{/* If playerTwoName is falsey, then render <PlayerInput /> component with Player Two params */}
@@ -47,7 +47,7 @@ class Battle extends Component {
 						<PlayerInput
 							id="playerTwo"
 							label="Player One"
-							onSubmit={this.handleSubmit()}
+							onSubmit={this.handleSubmit}
 						/>
 					)}
 				</div>
