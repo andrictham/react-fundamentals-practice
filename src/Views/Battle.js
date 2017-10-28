@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 import './Battle.css'
 
@@ -158,6 +159,13 @@ class Battle extends Component {
 						/>
 					)}
 				</div>
+
+				{playerOneImage &&
+					playerTwoImage && (
+						<Link className="button" to="">
+							Battle
+						</Link>
+					)}
 			</div>
 		)
 	}
