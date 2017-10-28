@@ -10,12 +10,7 @@ const PlayerPreview = ({ avatar, username, id, onReset }) => {
 				<img src={avatar} alt={`Avatar for ${username}`} className="avatar" />
 				<h2 className="username">@{username}</h2>
 			</div>
-			<button
-				className="reset"
-				onClick={() => {
-					onReset(id)
-				}}
-			>
+			<button className="reset" onClick={() => onReset(id)}>
 				Reset
 			</button>
 		</div>
@@ -109,7 +104,14 @@ class Battle extends Component {
 		})
 	}
 
-	handleReset(id) {}
+	handleReset(id) {
+		this.setState(() => {
+			const newState = {}
+			newState[id + 'Name'] = ''
+			newState[id + 'Image'] = null
+			return newState
+		})
+	}
 
 	render() {
 		const {
