@@ -6,6 +6,7 @@ import queryString from 'query-string'
 import './Results.css'
 import { battle } from '../Utils/api'
 import PlayerPreview from '../Components/PlayerPreview'
+import Loading from '../Components/Loading'
 
 const Profile = ({ profile }) => {
 	return (
@@ -85,7 +86,7 @@ class Results extends Component {
 	render() {
 		let { error, winner, loser, loading } = this.state
 		if (loading) {
-			return <p>Loading</p>
+			return <Loading text="Battling it out" />
 		}
 		if (error) {
 			return (
