@@ -39,6 +39,11 @@ class Loading extends Component {
 		// Run every 300ms, or whatever timing is specified
 	}
 
+	componentWillUnmount() {
+		window.clearInterval(this.interval)
+		console.log('Loaded!')
+	}
+
 	render() {
 		const { loadingText } = styles
 		let { text } = this.state
